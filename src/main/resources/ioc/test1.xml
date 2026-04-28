@@ -1,0 +1,43 @@
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--
+xml配置bean
+  优点：
+  缺点：配置繁琐、开发效率低、文件解析耗时
+-->
+    <bean class="com.asule.springbootreview.bean.Student" id="person">
+        <property name="name" value="asule"/>
+        <property name="age" value="29"/>
+        <property name="classList">
+            <list>
+                <value>math</value>
+                <value>english</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="com.asule.springbootreview.service.Test1Service" id="test1Service">
+        <property name="student" ref="person"/>
+        <property name="animal" ref="cat1"/>
+    </bean>
+
+    <!--    静态工厂方法  -->
+    <bean id="dog" class="com.asule.springbootreview.bean.AnimalFactory" factory-method="getAnimal">
+        <constructor-arg value="DOG"/>
+    </bean>
+    <bean id="cat" class="com.asule.springbootreview.bean.AnimalFactory" factory-method="getAnimal">
+        <constructor-arg value="CAT"/>
+    </bean>
+
+    <!--    实例工厂方法  -->
+    <bean id="animalFactory" class="com.asule.springbootreview.bean.AnimalFactory"/>
+    <bean id="dog1" factory-bean="animalFactory" factory-method="getAnimal1">
+        <constructor-arg value="DOG1"/>
+    </bean>
+    <bean id="cat1" factory-bean="animalFactory" factory-method="getAnimal1">
+        <constructor-arg value="CAT1"/>
+    </bean>
+</beans>

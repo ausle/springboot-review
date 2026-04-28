@@ -1,0 +1,5 @@
+org.springframework.context.ApplicationContextInitializer=\
+com.asule.springbootreview.initializer.AInitializer
+org.springframework.context.ApplicationListener=\
+com.asule.springbootreview.listener.my.FirstListener
+

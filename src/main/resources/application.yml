@@ -1,0 +1,61 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: asule-springboot
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: qwerty
+    url: jdbc:mysql://127.0.0.1:3306/study_sql?useSSL=true&useUnicode=true&characterEncoding=UTF-8
+    type: com.alibaba.druid.pool.DruidDataSource
+#  redis:
+#    host: 192.168.0.200
+#    port: 6379
+#    password: qwerty
+#    lettuce:
+#      pool:
+#        max-active: 8
+#        max-idle: 8
+#        min-idle: 0
+#        max-wait: 10
+#  rabbitmq:
+#    username: root
+#    password: root
+#    port: 5672
+#    host: 192.168.0.200
+#    virtual-host: /root
+#    listener:
+#      simple:
+#        prefetch: 1
+#    # 设置连接MQ的超时时间
+#    connection-timeout: 1s
+#    template:
+#      retry:
+#        # 开启超时重试
+#        enabled: true
+#        # 初始重试时间，第一次失败1000ms，第二次失败multiplier*1000ms
+#        initial-interval: 1000ms
+#        multiplier: 2
+#        # 最大重试次数
+#        max-attempts: 3
+#    # correlated：MQ异步回到返回回执，simple：MQ同步返回回执，线程会阻塞。none：关闭confirm
+#    publisher-confirm-type: correlated
+#    # 开启消息确认
+#    publisher-returns: true
+
+
+  profiles:
+    active: dev
+
+
+mybatis:
+  # 实体类别名包（简化 XML 中 resultType 写法）
+  type-aliases-package: com.asule.springbootreview.bean
+  # Mapper XML 文件位置（XML 版需要配置）
+  mapper-locations: classpath:mappers/*.xml
+  # 开启驼峰命名自动转换（如数据库 user_name → 实体类 userName）
+  configuration:
+    map-underscore-to-camel-case: true
+    # 打印 SQL 日志（调试用）
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
