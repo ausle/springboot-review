@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    <bean class="com.github.springreview.bean.MyTestFactoryBean" id="myTestFactoryBean"/>-->
+
+<!--    <bean id="person" class="com.github.springreview.bean.Person">-->
+<!--        <constructor-arg index="0" value="constructorPerson"/>-->
+<!--        <constructor-arg index="1" value="11"/>-->
+<!--    </bean>-->
+
+    <bean class="com.github.springreview.bean.F" id="testF">
+        <constructor-arg index="0" value="大卫奥塑料"/>
+        <constructor-arg index="1" value="11"/>
+        <property name="password" value="哈哈哈"/>
+    </bean>
+
+<!--    注册 AutowiredAnnotationBeanPostProcessor-->
+    <context:annotation-config/>
+</beans>

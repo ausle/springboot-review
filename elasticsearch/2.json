@@ -1,9 +1,0 @@
-POST /teacher/_doc/1
-{
-  "info": "下饭超人老师",
-  "email": "distinctofwang@gmail.com",
-  "name": {
-    "firstName": "下饭",
-    "lastName": "超人"
-  }
-}
