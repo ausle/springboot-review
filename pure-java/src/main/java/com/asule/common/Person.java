@@ -2,7 +2,7 @@ package com.asule.common;
 
 import java.util.Objects;
 
-public class Person {
+public class Person{
 
     private String name;
     private int age;

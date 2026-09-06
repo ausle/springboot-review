@@ -1,7 +1,6 @@
 package com.asule.springbootreview.controller;
 
 
-import com.asule.springbootreview.bean.Users;
 import com.asule.springbootreview.mapper.UsersMapper;
 import com.asule.springbootreview.service.TestService;
 import com.volcengine.ark.runtime.model.files.FileMeta;
@@ -18,7 +17,6 @@ import com.volcengine.ark.runtime.service.ArkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -37,13 +35,13 @@ public class TestController {
     UsersMapper usersMapper;
 
     @RequestMapping("/init")
-    @ResponseBody
+//    @ResponseBody
     public String initializer(){
-        Users users = usersMapper.selectByPrimaryKey(41);
-        System.out.println(users);
-        return testService.test();
-//        testdoubao();
-//        return "";
+//        Users users = usersMapper.selectByPrimaryKey(41);
+//        System.out.println(users);
+        String test = testService.test();
+        System.out.println(test);
+        return "initializer";
     }
 
 

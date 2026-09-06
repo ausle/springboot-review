@@ -18,12 +18,15 @@ public class SpringbootReviewApplication {
 		springApplication.addInitializers(new BInitializer());
         springApplication.addListeners(new SecondListener());
 
+        // 添加配置信息到默认配置，默认配置的优先级是最低的。
         Map map = new HashMap();
         map.put("key","A");
-        // 添加默认属性，这些属性
         springApplication.setDefaultProperties(map);
-        springApplication.setAdditionalProfiles("dev1");
 
+        // 是否处理命令行配置的开关
+        springApplication.setAddCommandLineProperties(true);
+        // SpringApplication可以额外指定profile。
+        springApplication.setAdditionalProfiles("dev1");
         springApplication.run(args);
     }
 

@@ -15,11 +15,9 @@ public class BeanFactoryTest {
     @Test
     public void testSimpleLoad() {
         BeanFactory factory = new XmlBeanFactory(new ClassPathResource("beanFactoryTest.xml"));
-
 //        MyTestFactoryBean bean1 = factory.getBean(MyTestFactoryBean.class);
 //        MyTestFactoryBean bean2 = (MyTestFactoryBean) factory.getBean("&myTestFactoryBean");
 //        MyTestBean bean3 = (MyTestBean) factory.getBean("myTestFactoryBean");
-
         Person person = factory.getBean(Person.class);
         assertEquals(11, person.getAge());
         assertEquals("Person{name='constructorPerson', age=11}", person.toString());

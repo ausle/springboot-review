@@ -59,3 +59,6 @@ mybatis:
     map-underscore-to-camel-case: true
     # 打印 SQL 日志（调试用）
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+hello:
+  name: 朱珠

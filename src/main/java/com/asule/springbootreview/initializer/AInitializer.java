@@ -25,6 +25,6 @@ public class AInitializer implements ApplicationContextInitializer<ConfigurableA
         environment.getPropertySources().addLast(mapPropertySource);
         System.out.println("AInitializer run");
         //设置必备的环境变量
-        environment.setRequiredProperties("isuper");
+//        environment.setRequiredProperties("isuper");
     }
 }

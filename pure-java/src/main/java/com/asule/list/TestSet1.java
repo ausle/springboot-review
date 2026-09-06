@@ -53,7 +53,12 @@ public class TestSet1 {
     }
 
 
-    public static void main(String[] args) {
-        testSet1();
+    public static void main(String[] args) throws InterruptedException {
+
+        AThread aThread = new AThread();
+        aThread.start();
+
+        Thread thread = new Thread(new ARunnable());
+        thread.start();
     }
 }

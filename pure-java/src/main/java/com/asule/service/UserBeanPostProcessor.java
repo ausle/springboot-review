@@ -1,6 +1,5 @@
 package com.asule.service;
 
-import com.asule.service.UserService;
 import com.asule.spring.BeanPostProcessor;
 import com.asule.spring.Component;
 
