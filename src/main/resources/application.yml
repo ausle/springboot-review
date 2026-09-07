@@ -19,15 +19,15 @@ spring:
 #        max-idle: 8
 #        min-idle: 0
 #        max-wait: 10
-#  rabbitmq:
-#    username: root
-#    password: root
-#    port: 5672
-#    host: 192.168.0.200
-#    virtual-host: /root
-#    listener:
-#      simple:
-#        prefetch: 1
+  rabbitmq:
+    username: root
+    password: root
+    port: 5672
+    host: 192.168.55.200
+    virtual-host: /
+    listener:
+      simple:
+        prefetch: 1
 #    # 设置连接MQ的超时时间
 #    connection-timeout: 1s
 #    template:
