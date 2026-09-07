@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.asule.sms.autoconfigure.SmsAutoConfiguration,\
+com.asule.bean.autoconfigure.SimpleBeanAutoConfiguration

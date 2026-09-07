@@ -1,13 +1,11 @@
 package com.github.service;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class HelloService {
-    private final String prefix;
 
-    public HelloService(String prefix) {
-        this.prefix = prefix;
-    }
-
-    public String sayHello(String name) {
-        return prefix + ", " + name;
+    public void sayHello() {
+        System.out.println("say hello");
     }
 }
