@@ -1,7 +1,7 @@
 
 <!-- html结构 -->
 <template>
-    <Person />
+    <Student />
 </template>
 
 <!-- script中写脚本 -->
@@ -10,12 +10,13 @@
  -->
 <script lang="ts">
 import Person from './components/Person.vue';
+import Student from './components/Student.vue';
 
     export default {
         name: 'App',
         // 引入进来还需要在components中注册才能使用
         components: {
-            Person
+            Person,Student
         },
         data() {
             return {
