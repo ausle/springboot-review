@@ -2,13 +2,16 @@ package com.asule.springbootreview.rabbitmq;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -68,6 +71,59 @@ public class Springboot1RabbitTest {
         Map<String,String> map=new HashMap<>();
         map.put("1","小猪猪");
         map.put("2","大猪猪");
-        rabbitTemplate.convertAndSend("","man",map);
+        rabbitTemplate.convertAndSend("","woman",map);
+    }
+
+
+    @org.junit.jupiter.api.Test
+    void testAnnotationExchange2() throws InterruptedException {
+        String exchange="producerExchange";
+        HashMap<String, String> data = new HashMap<>();
+        data.put("name","阿苏勒");
+        data.put("age","35");
+        CorrelationData correlationData=new CorrelationData();
+        // 消息id唯一
+        correlationData.setId(UUID.randomUUID().toString());
+        correlationData.getFuture().addCallback(new ListenableFutureCallback<CorrelationData.Confirm>() {
+            @Override
+            public void onFailure(Throwable ex) {
+                System.out.println("");
+            }
+            @Override
+            public void onSuccess(CorrelationData.Confirm result) {
+                // 回调函数中处理消息回执。
+                if (result.isAck()){
+                    System.out.println("消息发送成功");
+                }else {
+                    System.out.println("消息发送失败");
+                }
+            }
+        });
+        rabbitTemplate.convertAndSend(exchange,"annotation.a.b",data,correlationData);
+        Thread.sleep(2000);
+        System.out.println("我是一个大小丑🤡");
+    }
+
+    @Test
+    public void testObject1() {
+        // 发送消息
+        // 直接向队列发消息，routingKey指定的是队列名。队列若不存在，不会新建队列。
+        Map<String,String> map=new HashMap<>();
+        map.put("1","小朱珠");
+        map.put("2","大朱珠");
+
+        rabbitTemplate.setConfirmCallback(new RabbitTemplate.ConfirmCallback(){
+            @Override
+            public void confirm(CorrelationData correlationData, boolean ack, String cause) {
+                if (ack){
+                    System.out.println("投递成功");
+                    System.out.println(correlationData);
+                    System.out.println(cause);
+                }else{
+                    System.out.println("投递失败");
+                }
+            }
+        });
+        rabbitTemplate.convertAndSend("directExchange","red",map);
     }
 }

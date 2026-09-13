@@ -11,4 +11,19 @@ spring:
     virtual-host: /
     listener:
       simple:
+        # 消费完消息后，再消费1条。
         prefetch: 1
+        # 消费者消费消息的ACK模式
+          # none：不处理，消息投递给消费者后，立即ACK，删除队列消息。
+          # manual：由开发者自己处理，发ACK，NACK，REJECT。
+          # auto：自动模式，消息消费时，正常消费返回ACK，消息消费如果是业务异常，返回NACK，校验异常，返回reject。
+        acknowledge-mode: auto
+        retry:
+          # 开启消费者消费消息失败的重试机制
+          enabled: true
+          # 初始重试时间，第一次失败1000ms，第二次失败multiplier*1000ms
+          initial-interval: 1000ms
+          multiplier: 2
+          # 最大重试次数，这里的重试次数指的是，消费流程的重试次数，不是MQ投递的最大次数。
+          # 重试耗尽以后，默认MQ会删掉这条消息
+          max-retries: 3

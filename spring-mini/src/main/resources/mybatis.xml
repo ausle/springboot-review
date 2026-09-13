@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!---->
+    <properties resource="datasource.properties"></properties>
+
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+        <!--打开延迟加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--关闭积极加载\也就是打开延迟加载(也称为按需加载)-->
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <!--开启二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+    
+    <!--
+        批量定义别名。其别名为其类名，大小写都可以。所以不用再写全类名呢。
+    -->
+    <typeAliases>
+        <package name="com.asule.springmini.entity"/>
+    </typeAliases>
+
+<!--    <plugins>-->
+<!--        <plugin interceptor="com.asule.plugin.MyPlugin">-->
+<!--            <property name="username" value="asule"/>-->
+<!--        </plugin>-->
+
+<!--        <plugin interceptor="com.github.pagehelper.PageHelper">-->
+<!--            <property name="dialect" value="mysql"/>-->
+<!--        </plugin>-->
+<!--        -->
+<!--        <plugin interceptor="tk.mybatis.mapper.mapperhelper.MapperInterceptor">-->
+<!--            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>-->
+<!--        </plugin>-->
+        
+<!--    </plugins>-->
+
+    <!--
+        mybatis会通过typeHandler(类型处理器)完成jdbc类型和java类型的转换。
+        一般而言，我们不需要定义typeHandler。mybatis默认有许多类型处理器，这些默认支持的类型处理器，已经够我们使用呢。
+    -->
+    <!--<typeHandlers>-->
+        <!--<typeHandler handler=""/>-->
+    <!--</typeHandlers>-->
+
+    <!--
+        每一个environment代表着一个数据库环境。下面指明使用名为development的数据库环境。
+    -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="${jdbc.driverClassName}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+
+
+    <!--
+        resource只能单个的加载映射文件。
+        可以使用class加载mapper接口来加载映射文件。前提条件是，映射文件和mapper接口文件名保持一致。并且在一个包下。
+        可以定义package批量加载，该包下的所有映射文件都<package name="com.startbymybatis.dao"/>会加载进来。
+        同样，映射文件和mapper接口文件名也需要保持一致，并在一个包下。
+    -->
+    <mappers>
+        <mapper resource="mappers/task_mapper.xml"/>
+<!--        <mapper class="com.asule.mapper.UserMapper"/>-->
+<!--        <package name="com.asule.mapper"/>-->
+<!--        <package name="com.generic.dao"/>-->
+    </mappers>
+</configuration>
