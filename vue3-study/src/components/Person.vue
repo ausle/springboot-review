@@ -16,22 +16,25 @@
 <script lang="ts">
     export default {
         name: 'Person',
-        data() {
-            return {
-                msg: 'Hello Vue3 + TypeScript + Vite',
-                name: '张三',
-                age: 20
+        setup() {
+            // 这种方式声明变量，数据不是响应式的。修改数据后不会触发视图更新。
+            let name = '王五'
+            let age = 25
+            const sayHello = () => {
+                alert(`你好，我叫${name}，今年${age}岁`)
+            },
+            changeName = () => {
+                name = '李四'
+            },
+            changeAge = () => {
+                age = 30
             }
-        },
-        methods: {
-            sayHello() {
-                console.log(`你好，我叫${this.name}，今年${this.age}岁`)
-            },
-            changeName() {
-                this.name = '李四'
-            },
-            changeAge() {
-                this.age = 30
+            return {
+                name,
+                age,
+                sayHello,
+                changeName,
+                changeAge
             }
         }
     } 
