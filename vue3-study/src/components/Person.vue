@@ -7,6 +7,8 @@
     <button @click="changeAge">改变年龄</button>
     <button @click="sayHello">打招呼</button>
   </div>
+  <hr />
+  <h2>{{ msg }}</h2>
 </template>
 
 <!-- 
@@ -16,6 +18,18 @@
 <script lang="ts">
     export default {
         name: 'Person',
+        // 1、setup可以和data、methods共存，setup优先级高于data和methods。
+        // 2、data和methods中可以使用setup中返回的变量和方法。
+        data() {
+            return {
+                msg: 'i am person component,name is '+this.name+" age is "+this.age
+            }
+        },
+        methods: {
+            show() {
+                alert(`你好，我叫${this.name}，今年${this.age}岁`)
+            },
+        },
         setup() {
             // 这种方式声明变量，数据不是响应式的。修改数据后不会触发视图更新。
             let name = '王五'
