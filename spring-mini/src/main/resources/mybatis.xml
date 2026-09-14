@@ -23,7 +23,15 @@
         <package name="com.asule.springmini.entity"/>
     </typeAliases>
 
-<!--    <plugins>-->
+    <plugins>
+        <!--
+            PageHelper 会拦截紧跟在 PageHelper.startPage(...) 后的第一条 SELECT，
+            并按 MySQL 语法追加 COUNT 和 LIMIT。
+        -->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="helperDialect" value="mysql"/>
+            <property name="reasonable" value="true"/>
+        </plugin>
 <!--        <plugin interceptor="com.asule.plugin.MyPlugin">-->
 <!--            <property name="username" value="asule"/>-->
 <!--        </plugin>-->
@@ -36,7 +44,7 @@
 <!--            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>-->
 <!--        </plugin>-->
         
-<!--    </plugins>-->
+    </plugins>
 
     <!--
         mybatis会通过typeHandler(类型处理器)完成jdbc类型和java类型的转换。

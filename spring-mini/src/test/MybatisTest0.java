@@ -1,5 +1,7 @@
 import com.asule.springmini.entity.Task;
 import com.asule.springmini.mapper.TaskMapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -45,18 +47,31 @@ public class MybatisTest0 {
 
     @Test
     public void testSelect2()  {
-        // 默认的执行器类型是：ExecutorType.SIMPLE
-        // openSession执行的逻辑是什么？
         SqlSession session = sqlSessionFactory.openSession();
         try {
             // 通过sqlSession先获取到Mapper接口对象
             TaskMapper mapper = session.getMapper(TaskMapper.class);
-            Task task = mapper.queryTaskByMsg("07902748804");
             List<Task> tasks = mapper.getTasks("asule");
-            System.out.println(task);
             System.out.println(tasks.size());
         } finally {
             session.close();
         }
     }
+
+    @Test
+    public void test(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        TaskMapper taskMapper = sqlSession.getMapper(TaskMapper.class);
+
+        // 必须紧挨目标 Mapper 查询：请求第 1 页，每页 5 条。
+        PageHelper.startPage(1, 5);
+        List<Task> tasks = taskMapper.getTasks("asule");
+
+        PageInfo<Task> pageInfo = new PageInfo<Task>(tasks);
+        System.out.println("当前页数据：" + pageInfo.getList());
+        System.out.println("总记录数：" + pageInfo.getTotal());
+        System.out.println("总页数：" + pageInfo.getPages());
+    }
+
+
 }

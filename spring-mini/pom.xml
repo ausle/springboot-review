@@ -43,6 +43,12 @@
       <artifactId>mybatis</artifactId>
       <version>3.4.2</version>
     </dependency>
+    <!-- MyBatis 分页拦截器。spring-mini 不是 Spring Boot，因此使用核心依赖并在 mybatis.xml 注册。 -->
+    <dependency>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>5.3.3</version>
+    </dependency>
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>

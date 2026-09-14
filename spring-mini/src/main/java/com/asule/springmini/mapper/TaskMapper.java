@@ -21,5 +21,11 @@ public interface TaskMapper {
 
     List<Task> getTasks(@Param("userId")String userId);
 
+    int countTasksByUserId(@Param("userId") String userId);
+
+    List<Task> queryTasksByPage(@Param("userId") String userId,
+                                @Param("offset") int offset,
+                                @Param("pageSize") int pageSize);
+
     List<Task> getTasksOrder(@Param("userId")String userId,@Param("orderBy")String orderBy);
 }

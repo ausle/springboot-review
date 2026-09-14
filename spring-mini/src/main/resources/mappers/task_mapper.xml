@@ -34,7 +34,22 @@
     </select>
 
     <select id="getTasks" parameterType="string" resultMap="dataMap">
-        SELECT <include refid="Base_Column_List"/> from big_market_01.task where user_id = #{userId};
+        SELECT <include refid="Base_Column_List"/> from big_market_01.task where user_id = #{userId}
+    </select>
+
+    <!-- 原生分页：不调用 PageHelper，SQL 自己接收 offset 和 pageSize。 -->
+    <select id="countTasksByUserId" resultType="int">
+        SELECT COUNT(*)
+        FROM big_market_01.task
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="queryTasksByPage" resultMap="dataMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM big_market_01.task
+        WHERE user_id = #{userId}
+        ORDER BY id ASC
+        LIMIT #{offset}, #{pageSize}
     </select>
 
     <select id="getTasksOrder" parameterType="map" resultMap="dataMap">
