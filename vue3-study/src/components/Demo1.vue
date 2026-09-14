@@ -40,7 +40,7 @@
 
   4、
   -->
-<script setup lang="ts" name="PersonSuper">
+<script setup lang="ts" name="Demo1">
     // 这种方式声明变量，数据是响应式的。修改数据后会触发视图更新。
 
     import { reactive, ref } from 'vue'

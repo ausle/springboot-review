@@ -30,7 +30,7 @@
 -->
 
 
-<script lang="ts" setup name="Student">
+<script lang="ts" setup name="Demo2">
   import { reactive, toRef, toRefs,ref,computed } from 'vue'
 
   let person = reactive({
@@ -81,14 +81,14 @@
     },
     set(newValue: string) {
       let names = newValue.split('-')
-      firstName.value = names[0]
-      lastName.value = names[1]
+      firstName.value = names[0]??''
+      lastName.value = names[1]??''
     } 
   })  
 
 
   const changeFullName = () => {
-    fullName.value = '王-五'
+    fullName.value = '王-老五'
   }
 
 </script>
