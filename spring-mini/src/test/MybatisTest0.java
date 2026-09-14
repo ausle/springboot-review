@@ -30,21 +30,33 @@ public class MybatisTest0 {
 
 
     @Test
-    public void testSelect() throws IOException {
+    public void testSelect1() throws IOException {
         // 默认的执行器类型是：ExecutorType.SIMPLE
         // openSession执行的逻辑是什么？
         SqlSession session = sqlSessionFactory.openSession();
         try {
-            // 通过sqlSession先获取到Mapper接口对象
-            TaskMapper mapper = session.getMapper(TaskMapper.class);
-            List<Task> tasks = mapper.queryNoSendMessageTaskList();
-            System.out.println(tasks);
+            Task task = session.selectOne("com.asule.springmini.mapper.TaskMapper.queryTaskByMsg","07902748804");
+            System.out.println(task);
         } finally {
             session.close();
         }
     }
 
 
-
-
+    @Test
+    public void testSelect2()  {
+        // 默认的执行器类型是：ExecutorType.SIMPLE
+        // openSession执行的逻辑是什么？
+        SqlSession session = sqlSessionFactory.openSession();
+        try {
+            // 通过sqlSession先获取到Mapper接口对象
+            TaskMapper mapper = session.getMapper(TaskMapper.class);
+            Task task = mapper.queryTaskByMsg("07902748804");
+            List<Task> tasks = mapper.getTasks("asule");
+            System.out.println(task);
+            System.out.println(tasks.size());
+        } finally {
+            session.close();
+        }
+    }
 }

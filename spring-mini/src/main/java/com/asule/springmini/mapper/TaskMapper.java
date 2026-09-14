@@ -2,6 +2,7 @@ package com.asule.springmini.mapper;
 
 import com.asule.springmini.entity.Task;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,4 +15,11 @@ import java.util.List;
 public interface TaskMapper {
 
     List<Task> queryNoSendMessageTaskList();
+
+    Task queryTaskByMsg(@Param("msgId") String msgId);
+
+
+    List<Task> getTasks(@Param("userId")String userId);
+
+    List<Task> getTasksOrder(@Param("userId")String userId,@Param("orderBy")String orderBy);
 }

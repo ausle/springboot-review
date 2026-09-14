@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.asule.springmini.mapper.TaskMapper">
+
+    <!--  二级缓存 -->
+    <!--<cache />-->
     <resultMap id="dataMap" type="com.asule.springmini.entity.Task">
         <id column="id" property="id"/>
         <result column="user_id" property="userId"/>
@@ -22,6 +25,12 @@
         from big_market_01.task
         where state = 'fail' or (state = 'create' and now() - update_time > 6)
             limit 10
+    </select>
+
+    <select id="queryTaskByMsg" parameterType="string" resultMap="dataMap" statementType="PREPARED">
+        select user_id, topic, message_id, message
+        from big_market_01.task
+        where message_id = #{msgId}
     </select>
 
     <select id="getTasks" parameterType="string" resultMap="dataMap">
