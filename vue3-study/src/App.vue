@@ -11,6 +11,12 @@
         如果不加冒号，则只是作为普通字符串传递。
     -->
     <Son :personList="personList1" :person="person" name="son"/>
+
+    <hr />
+    <button @click="showDemo6 = !showDemo6">
+      {{ showDemo6 ? '隐藏 Demo6' : '显示 Demo6' }}
+    </button>
+    <Demo6 v-if="showDemo6" />
 </template>
 
 <!-- script中写脚本 -->
@@ -26,6 +32,7 @@ import Demo1 from './components/Demo1.vue';
     import Demo3 from './components/Demo3.vue';
     import Demo4 from './components/Demo4.vue';
     import Son from './components/Demo5.vue';
+    import Demo6 from './components/Demo6.vue';
     import {type Person} from '@/types'
     import {type Persons} from '@/types'
 
@@ -42,6 +49,8 @@ import Demo1 from './components/Demo1.vue';
       {id:'10',name:'张三三',age:18},
       {id:'12',name:'李四四',age:19},
       {id:'13',name:'王五五',age:20}])
+
+    const showDemo6 = ref(true)
 
 </script>
 
