@@ -7,7 +7,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: qwerty
-    url: jdbc:mysql://127.0.0.1:3306/study_sql?useSSL=true&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://192.168.22.200:3306/study_sql?useSSL=true&useUnicode=true&characterEncoding=UTF-8
     type: com.alibaba.druid.pool.DruidDataSource
 #  redis:
 #    host: 192.168.0.200
@@ -23,7 +23,7 @@ spring:
     username: root
     password: root
     port: 5672
-    host: 192.168.55.200
+    host: 192.168.22.200
     virtual-host: /
     listener:
       simple:

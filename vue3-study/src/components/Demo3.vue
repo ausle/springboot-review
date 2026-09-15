@@ -195,6 +195,10 @@
     }, { deep: true })  
 
 
+    // wacthEffect，不用直接指定要监视谁，会自动进行回调。
+    // wacthEffect的回调，
+
+
 </script>
 
 

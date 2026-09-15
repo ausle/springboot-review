@@ -1,3 +1,5 @@
+package mybatis;
+
 import com.asule.springmini.entity.Task;
 import com.asule.springmini.mapper.TaskMapper;
 import org.apache.ibatis.io.Resources;
@@ -29,7 +31,6 @@ public class MybatisTest1 {
         // 对配置文件进行了解析，最主要的职责是，构建SqlSessionFactory
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);   //实际使用按单例的方式。
     }
-
 
     @Test
     public void testNativeLimitPageQuery() {

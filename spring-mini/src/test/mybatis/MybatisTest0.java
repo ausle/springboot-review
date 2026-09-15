@@ -1,3 +1,5 @@
+package mybatis;
+
 import com.asule.springmini.entity.Task;
 import com.asule.springmini.mapper.TaskMapper;
 import com.github.pagehelper.PageHelper;
