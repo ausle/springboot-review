@@ -38,6 +38,10 @@
       ref返回的是一个包含value属性的对象，而reactive返回的是一个响应式对象本身。
       
 
+      ref可以处理，基本数据类型、对象数据类型，任何类型吗？
+      reactive() 可以处理对象、数组、Map、Set，但不能处理字符串、数字、布尔值等基本类型。
+
+
   4、
   -->
 <script setup lang="ts" name="Demo1">
