@@ -30,6 +30,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.16</version>
         </dependency>
+        <!-- 简单的控制台日志实现；它会自动带上 slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.36</version>
+        </dependency>
     </dependencies>
 
     <build>
