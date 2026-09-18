@@ -26,7 +26,7 @@ public class App1 {
 
 
         2、如何结果这样的线程安全问题
-
+            - synchronized
      */
     @Test
     public void test01() throws InterruptedException {
@@ -54,7 +54,15 @@ public class App1 {
     static Object object=new Object();
 
     /*
-        synchronized
+        synchronized：
+            给一段操作加上一把锁，使得同一时间只能有一个线程能拿到锁。
+            当一个线程A拿到锁后，其他线程尝试获取锁，就会进入阻塞状态。
+            线程A在执行中，即使失去执行权，它仍持有锁，也不会释放锁，此时其他线程也无法获取到锁。
+
+            当线程A退出synchronized代码块时，会释放锁。
+            假如有BCD处于阻塞状态，此时会有某个线程拿到锁，其他线程依旧处于阻塞状态。
+
+        synchronized中的代码的操作，具备原子性。
      */
     @Test
     public void test02() throws InterruptedException {
