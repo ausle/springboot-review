@@ -34,4 +34,10 @@ public class Test1Controller {
         return "当前登录用户：" + request.getSession().getAttribute("name");
     }
 
+    @RequestMapping(path = "logout")
+    public String logout(HttpSession httpSession) {
+        // 注销当前的session
+        httpSession.invalidate();
+        return "登出成功";
+    }
 }

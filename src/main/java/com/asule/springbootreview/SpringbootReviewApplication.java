@@ -2,6 +2,7 @@ package com.asule.springbootreview;
 
 import com.asule.springbootreview.initializer.BInitializer;
 import com.asule.springbootreview.listener.my.SecondListener;
+import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,6 +12,7 @@ import java.util.Map;
 
 @SpringBootApplication
 @MapperScan(value = "com.asule.springbootreview.Mapper")
+@Slf4j
 public class SpringbootReviewApplication {
 
     public static void main(String[] args) {
@@ -28,6 +30,11 @@ public class SpringbootReviewApplication {
         // SpringApplication可以额外指定profile。
         springApplication.setAdditionalProfiles("dev1");
         springApplication.run(args);
+
+        log.debug("==============================SpringbootReviewApplication================debug==============");
+        log.info("==============================SpringbootReviewApplication===================info===========");
+        log.warn("==============================SpringbootReviewApplication=====================warn=========");
+        log.error("==============================SpringbootReviewApplication======================error========");
     }
 
 }

@@ -88,7 +88,10 @@
     }
 
     const changeGame = () => {
-      games[0].name = 'Dota2'
+      const firstGame = games[0]
+      if (firstGame) {
+        firstGame.name = 'Dota2'
+      }
     }
 
 </script>
